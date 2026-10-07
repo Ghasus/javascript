@@ -1,0 +1,103 @@
+function setup() {
+  // Create a canvas 400 pixels wide by 400 pixels high
+  createCanvas(400, 400);
+}
+
+var eyes = 40;
+var teeth = 16;
+var ee = 7;
+var y1 = 157;
+var grow = true;
+var pupil1x = 0;
+var pupil1y = 10;
+var xRotation = false;
+var yRotation = false;
+let pupilX = 0;      // Offsets pupil left/right relative to eye center (-12 to +12)
+let speed = 0.5;     // Speed and direction of movement
+
+draw = function() {
+
+    background(104, 130, 62);
+    
+    noStroke();
+
+    fill(235, 219, 211);
+    ellipse(150, 100, 70, 180);  // left ear
+    ellipse(240, 100, 70, 180);  // right ear
+    
+    fill(235, 176, 200);
+    ellipse(150, 100, 55, 165);  // left ear fill
+    ellipse(240, 100, 55, 165);  // right ear fill
+
+    fill(235, 219, 211);
+    ellipse(200, 270, 200, 220);    // face
+    
+    //fill(255, 255, 255);
+    //ellipse(170, 220, eyes, eyes);  // left eye
+    //ellipse(230, 220, eyes, eyes);  // right eye
+    
+    stroke(130, 22, 22);
+    strokeWeight(3);
+    
+    fill(235, 176, 200);
+    triangle(180, 270, 200, 300, 220, 270);
+
+    pupilX += speed; // Update position
+    if (pupilX > 12 || pupilX < -12) {
+        speed = -speed;
+    }
+    let pupilY = 0.08 * (pupilX * pupilX);
+    let leftEyeX = 170;
+    let rightEyeX = 230;
+    let eyeY = 220;
+    let x1 = leftEyeX + pupilX;
+    let y1 = eyeY + pupilY;
+    let x2 = rightEyeX + pupilX;
+    let y2 = eyeY + pupilY;
+
+    fill(255, 255, 255);
+    stroke(0);
+    strokeWeight(1);
+    ellipse(leftEyeX, eyeY, 40, 40);   // Left eye
+    ellipse(rightEyeX, eyeY, 40, 40);  // Right eye
+  
+    ellipse(x1, y1, 7, 7);  // Left pupil
+    ellipse(x2, y2, 7, 7);  // Right pupil
+  
+    //fill(0, 0, 0);
+    //ellipse(170 + pupil1x, 220 + pupil1y, ee, ee);  // left eye pupil
+    //ellipse(230 + pupil1x, 220  +pupil1y, ee, ee);  // right eye pupil
+    
+    fill(255, 255, 255);
+    noStroke();
+    rect(178, 310, 20, teeth); // left tooth
+    rect(203, 310, 20, teeth); // right tooth
+    
+    // mouth
+    fill(235, 219, 211);
+    stroke(130, 22, 22);
+    arc(185, 300, 30, 30, 25, 160);
+    arc(215, 300, 30, 30, 25, 179);
+    
+    if(grow) 
+    {
+        teeth++;
+        if(teeth >= 40)
+        {
+            grow = false;
+        }
+    }
+    else
+    {
+        teeth--;
+        if(teeth <= 15)
+        {
+            grow = true;
+        }
+    }
+
+    
+};
+
+
+
