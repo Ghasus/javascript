@@ -1,0 +1,103 @@
+var eyes = 40;
+var teeth = 16;
+var ee = 7;
+var y1 = 157;
+var grow = true;
+var pupil1x = 0;
+var pupil1y = 10;
+var xRotation = false;
+var yRotation = false;
+
+draw = function() {
+
+    background(104, 130, 62);
+    
+    noStroke();
+
+    fill(235, 219, 211);
+    ellipse(150, 100, 70, 180);  // left ear
+    ellipse(240, 100, 70, 180);  // right ear
+    
+    fill(235, 176, 200);
+    ellipse(150, 100, 55, 165);  // left ear fill
+    ellipse(240, 100, 55, 165);  // right ear fill
+
+    noStroke();
+    fill(235, 219, 211);
+    ellipse(200, 270, 200, 220);    // face
+    
+    fill(255, 255, 255);
+    ellipse(170, 220, eyes, eyes);  // left eye
+    ellipse(230, 220, eyes, eyes);  // right eye
+    
+    stroke(130, 22, 22);
+    strokeWeight(3);
+    
+    fill(235, 176, 200);
+    triangle(180, 270, 200, 300, 220, 270);
+
+    fill(0, 0, 0);
+    ellipse(170 + pupil1x, 220 + pupil1y, ee, ee);  // left eye pupil
+    ellipse(230 + pupil1x, 220  +pupil1y, ee, ee);  // right eye pupil
+    
+    fill(255, 255, 255);
+    noStroke();
+    rect(178, 310, 20, teeth); // left tooth
+    rect(203, 310, 20, teeth); // right tooth
+    
+    // mouth
+    fill(235, 219, 211);
+    stroke(130, 22, 22);
+    arc(185, 300, 30, 30, 1, 155);
+    arc(215, 300, 30, 30, 25, 179);
+    
+    if(grow) 
+    {
+        teeth++;
+        if(teeth >= 40)
+        {
+            grow = false;
+        }
+    }
+    else
+    {
+        teeth--;
+        if(teeth <= 15)
+        {
+            grow = true;
+        }
+    }
+    if(!xRotation)
+    {
+        pupil1x--;
+        if(pupil1x <= -10)
+        {
+            xRotation = true;
+        }
+    }
+    else
+    {
+        pupil1x++;
+        if(pupil1x >= 10)
+        {
+            xRotation = false;
+        }
+    }
+        if(!yRotation)
+    {
+        pupil1y--;
+        if(pupil1y <= -10)
+        {
+            yRotation = true;
+        }
+    }
+    else
+    {
+        pupil1y++;
+        if(pupil1y >= 10)
+        {
+            yRotation = false;
+        }
+    }
+    
+};
