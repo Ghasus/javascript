@@ -1,3 +1,8 @@
+function setup() {
+  // Create a canvas 400 pixels wide by 400 pixels high
+  createCanvas(400, 400);
+}
+
 var eyes = 40;
 var teeth = 16;
 var ee = 7;
