@@ -1,3 +1,8 @@
+function setup() {
+  // Create a canvas 400 pixels wide by 400 pixels high
+  createCanvas(400, 400);
+}
+
 var xPos1 = 400;
 var yPos1 = 400;
 var xPos2 = 400;
